@@ -1,7 +1,10 @@
 #ifndef LEDSCONTROLLER_H
 #define LEDSCONTROLLER_H
 #include <array>
+#include <iterator>     // std::distance
 #include "led.hpp"
+
+constexpr int LedsCount  =  4;
 
 enum class LedMode : unsigned char {
   Tree = 0,
@@ -10,7 +13,7 @@ enum class LedMode : unsigned char {
   End = 2
 };
 
-constexpr int LedsCount  =  4;
+
 class LedsController {
   public:
     inline LedsController() { SwitchOnAll(); };  
@@ -30,8 +33,8 @@ class LedsController {
     void NextMode() { mode = (mode < LedMode::All) ? 
       static_cast<LedMode>(static_cast<unsigned char>(mode) + 1U) : LedMode::Tree;
       currentLed = 0;
-      if (mode == LedMode::Chess){
-        for(int i = 0; i < LedsCount; i++) {
+      if (mode == LedMode::Chess){        
+        for(int i = 0; i < leds.size(); i++) {
           if ((i % 2) == 0) {
             leds[i].SwitchOn();
           } else {
@@ -42,6 +45,13 @@ class LedsController {
         SwitchOnAll();
       }      
     };    
+    
+    
+    
+    
+    
+    
+    
     
   inline void Update() {
       switch(mode) {

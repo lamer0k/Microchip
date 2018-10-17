@@ -54,7 +54,7 @@ int main(void)
       SetLedsBeginState(Mode, Leds);
     } else
     {
-      RunCurrentMode(Mode, Leds, currentLed);
+      Update(Mode, Leds, currentLed);
       currentLed = (currentLed < (LEDS_COUNT - 1)) ? (currentLed + 1) : 0;
     }
     Delay(1000U);

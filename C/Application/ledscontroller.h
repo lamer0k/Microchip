@@ -14,12 +14,21 @@ typedef enum
 } tLedMode;
 
 
+
 void SwitchOnAllLed(tPort *pLed, int size) {
   for (int i = 0; i < size; i++) {
     SET_BIT(pLed->pPort->OUT.reg, pLed->pin);
     pLed++;
   }
 }
+
+void ToggleAllLed(tPort *pLed, int size) {
+  for (int i = 0; i < size; i++) {    
+    ToggleLed(pLed);
+    pLed++;
+  }
+}
+
 
 void SwitchChessLed(tPort *pLed, int size) {
   for (int i = 0; i < size; i++) {
@@ -28,13 +37,6 @@ void SwitchChessLed(tPort *pLed, int size) {
     } else {
       CLEAR_BIT(pLed->pPort->OUT.reg, pLed->pin);
     }
-    pLed++;
-  }
-}
-
-void ToggleAll(tPort *pLed, int size) {
-  for (int i = 0; i < size; i++) {    
-    ToggleLed(pLed);
     pLed++;
   }
 }
@@ -53,17 +55,19 @@ void SetLedsBeginState(tLedMode mode, tPort *leds) {
   }
 }
 
-void RunCurrentMode(tLedMode mode, tPort *leds, int curLed) {
+
+void Update(tLedMode mode, tPort *leds, int curLed) {
   switch(mode) {
       case LM_Tree:
         ToggleLed(&leds[curLed]) ;
       break;      
       case LM_All: 
       case LM_Chess:
-        ToggleAll(leds,LEDS_COUNT);
+        ToggleAllLed(leds,LEDS_COUNT);
       break;
       default:
       break;
      }
 }
+
 #endif
