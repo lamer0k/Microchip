@@ -15,8 +15,12 @@ void ToggleLed(tPort *pLed) {
   TOGGLE_BIT(pLed->pPort->OUT.reg, pLed->pin);
 }
 
-void SwitchOnLed(tPort *pLed) {
-  SET_BIT(pLed->pPort->OUT.reg, pLed->pin);
-}
+//void SwitchOnLed(tPort *pLed) {
+//  SET_BIT(pLed->pPort->OUT.reg, pLed->pin);
+//}
+
+//void SwitchOffLed(tPort *pLed) {
+//   CLEAR_BIT(pLed->pPort->OUT.reg, pLed->pin);
+//}
 
 #endif
