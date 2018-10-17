@@ -1,0 +1,19 @@
+"--endian=little" 
+
+"--cpu=Cortex-M4" 
+
+"--fpu=VFPv4_SP" 
+
+"-p" 
+
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\CONFIG\debugger\Microchip\ATSAMD51J19A.ddf" 
+
+"--semihosting" 
+
+"--device=ATSAMD51J19A" 
+
+"--multicore_nr_of_cores=1" 
+
+
+
+
